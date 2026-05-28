@@ -1,4 +1,5 @@
 from db_conn import get_engine
+from analytics import get_user_transactions, get_plan_groups, perform_test, user_txn_test
 import pandas as pd
 
 
@@ -15,4 +16,14 @@ if len(conn_test) > 0:
 
 else:
     print('Connection successful but schema contains 0 tables.')
+
+
+users_df = pd.read_sql('select * from users', engine)
+transactions_df = pd.read_sql('select * from transactions', engine)
+events_df = pd.read_sql('select * from events', engine)
+
+
+user_txn_test(users_df, transactions_df)
+
+
 
