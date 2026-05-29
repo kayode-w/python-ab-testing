@@ -23,12 +23,3 @@ def get_engine():
         raise ConnectionError(f"Could not connect to the database: {e}")
 
 
-
-
-
-    tbl_test = pd.read_sql("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'", engine)
-    if len(tbl_test) > 0:
-        print(f'Connection successful! Schema contains {len(tbl_test)} tables.')
-        print(tbl_test)
-
-
